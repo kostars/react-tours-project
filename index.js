@@ -1,31 +1,17 @@
-import React, { Component } from './node_modules/react'
-import "./TourList.scss";
-import Tour from '../Tour/Tour'
-import { tourData } from './tourData'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.scss';
+import App from './App';
 
-class TourList extends Component {
-    state= {
-        tours : tourData
-    }
-    removeTour = id => {
-        const {tours} = this.state;
-        const { sortedTours} = tours.filter(tour => tour.id !== id);
-        this.setState({
-            tours:sortedTours
-        })
-    }
-    
-    render() {
-        const {tours} = this.state;
-        return (
-            <section className="tourlist">
-                {tours.map(tour => {
-                    return <Tour key={tour.id} tour = {tour} removeTour = {this.removeTour} />
-                })}
-              
-            </section>
-        )
-    }
-}
 
-export default TourList
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+//serviceWorker.unregister();
